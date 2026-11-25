@@ -24,4 +24,4 @@
 - `pnpm run check` 只读检查生成工具和聚合字段是否有漂移，并用本地测试检查原生行及成员入口解析。
 - 在默认工作区根目录运行 `node tools/new-dsh-plugin/cli.mts --check plugins/dsh-atlas-continuity` 检查骨架与元数据。
 
-图标的罗盘徽记和遮罩沿用默认工作区列表 Atlas 的几何与配色，主体为原创分岔轨迹。
+图标保留 Atlas 系列的罗盘徽记，主体是一笔相连的双环，表现工作在不同会话之间延续。
