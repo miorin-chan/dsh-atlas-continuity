@@ -4,7 +4,7 @@ private: true
 description: 'Review repository changes and history, and keep workspace notes while the agent works.'
 license: MIT
 engines:
-  dsh: '0.2.2-rc.5'
+  dsh: '>=0.2.2-rc.5'
   node: '^22.18.0 || >=24.11.0'
 plugins:
   - name: '@miorin/dsh-vcs-panel'

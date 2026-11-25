@@ -28,7 +28,7 @@
     "docs/README.md"
   ],
   "engines": {
-    "dsh": "0.2.2-rc.5",
+    "dsh": ">=0.2.2-rc.5",
     "node": "^22.18.0 || >=24.11.0"
   },
   "scripts": {
