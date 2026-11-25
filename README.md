@@ -7,9 +7,8 @@ Open the version control tab in the right sidebar to review Git and Jujutsu chan
 or open Sideby Note beside the conversation to capture ideas while the agent works.
 The two plugin rows have independent switches.
 
-This private bundle links the sibling `dsh-vcs-panel` and `dsh-sideby-note` checkouts.
-Build those checkouts first, then run `pnpm install` here.
-In DSH, choose **Plugins** → **Add plugin** and select this directory.
+In DeepSeek Harness, choose **Plugins** → **Add plugin** and enter `@miorin/dsh-atlas-continuity`
+(or select a local directory after building sibling checkouts and running `pnpm install`).
 If either member is already installed as a standalone bundle, remove its standalone bundle selection first
 to avoid duplicate row IDs.
 

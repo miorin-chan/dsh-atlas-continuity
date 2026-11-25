@@ -5,19 +5,20 @@
 生成的 [patch](../cordis.patch.yml)保留成员自己的行 ID、包名和配置，成员仍可独立安装。
 一个 profile 只能选用同一行 ID 的一种装载方式。
 
-## 本地准备
+## 准备与兼容
 
-本包私有，不发布到 npm。目标 DSH 版本为 `0.2.2-rc.5`。
+包名 `@miorin/dsh-atlas-continuity` 发布至 npm。目标 DSH 版本为 `0.2.2-rc.5`。
 源码准备需要 Node.js 22.18 或更新的 22.x 版本，或 24.11 及更新版本，以及 pnpm。
-两个源码目录 `../dsh-vcs-panel`、`../dsh-sideby-note` 须已完成各自的构建。
-在本目录运行 `pnpm install --frozen-lockfile`，安装会在本目录建立链接并生成聚合 patch。
+本地联调时，两个源码目录 `../dsh-vcs-panel`、`../dsh-sideby-note` 须已完成各自的构建。
+在本目录运行 `pnpm install --frozen-lockfile`，安装会在本目录建立依赖并生成聚合 patch。
 安装至 DSH 的入口见[用户说明](../README.zh.md)。
 
 ## 维护与校验
 
 运行 `pnpm run build` 更新 `scripts/dsh-aggregate.mjs` 及聚合字段。
 变更成员时先编辑清单，再生成字段、运行 `pnpm install` 更新锁文件并校验。
-提交清单、生成的 patch、包清单及锁文件。
+提交清单、生成的 patch、包清单、锁文件以及生成的运行时入口（`index.js`、`client.js`），
+以便独立仓库 CI 无需工作区工具即可校验和发布。
 生成器源文件与默认工作区的 `tools/dsh-aggregate/src/` 保持一致，构建产物不入库。
 
 - `pnpm test` 重新生成，然后运行全部检查。
