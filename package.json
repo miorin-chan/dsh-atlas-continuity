@@ -1,0 +1,60 @@
+{
+  "name": "@miorin/dsh-atlas-continuity",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "description": "Review repository changes and history, and keep workspace notes while the agent works.",
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-bundle",
+    "aggregate"
+  ],
+  "exports": {
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "aggregate.yml",
+    "cordis.patch.yml",
+    "scripts/dsh-aggregate.mjs",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "README.zh.md",
+    "AGENTS.md",
+    "AGENTS.local.md",
+    "docs/README.md"
+  ],
+  "engines": {
+    "dsh": "0.2.2-rc.5",
+    "node": "^22.18.0 || >=24.11.0"
+  },
+  "scripts": {
+    "build:tools": "node scripts/aggregate/build.mts",
+    "build": "npm run --silent build:tools && node scripts/dsh-aggregate.mjs generate .",
+    "prepare": "npm run build 1>&2",
+    "test": "npm run build && npm run check",
+    "check": "npm run --silent build:tools -- --check && node scripts/dsh-aggregate.mjs check . && node --test"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2",
+    "yaml": "2.9.1"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "aggregate": {
+      "plugins": [
+        "@miorin/dsh-vcs-panel",
+        "@miorin/dsh-sideby-note"
+      ]
+    }
+  },
+  "dependencies": {
+    "@miorin/dsh-vcs-panel": "link:../dsh-vcs-panel",
+    "@miorin/dsh-sideby-note": "link:../dsh-sideby-note"
+  }
+}
