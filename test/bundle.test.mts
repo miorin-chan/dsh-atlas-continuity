@@ -25,6 +25,7 @@ test('inserts the two original plugin rows in order plus the aggregate runtime r
     version: 1,
     runtimeRowId: 'dsh-atlas-continuity',
     plugins: names,
+    defaults: Object.fromEntries(names.map(name => [name, true])),
   })
   assert.deepEqual(parse(await read(manifest.dsh.bundle.patch)), [{
     insert: [

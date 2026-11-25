@@ -9,5 +9,7 @@ engines:
 plugins:
   - name: '@miorin/dsh-vcs-panel'
     spec: link:../dsh-vcs-panel
+    enabled: true
   - name: '@miorin/dsh-sideby-note'
     spec: link:../dsh-sideby-note
+    enabled: true
