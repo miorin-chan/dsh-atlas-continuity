@@ -12,13 +12,16 @@
     "aggregate"
   ],
   "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
     "./locale/*.json": "./locale/*.json",
     "./icon": "./icon.svg"
   },
   "files": [
     "aggregate.yml",
+    "client.js",
+    "index.js",
     "cordis.patch.yml",
-    "scripts/dsh-aggregate.mjs",
     "locale/*.json",
     "icon.svg",
     "README.md",
@@ -32,14 +35,13 @@
     "node": "^22.18.0 || >=24.11.0"
   },
   "scripts": {
-    "build:tools": "node scripts/aggregate/build.mts",
-    "build": "npm run --silent build:tools && node scripts/dsh-aggregate.mjs generate .",
-    "prepare": "npm run build 1>&2",
+    "build": "node ../../tools/dsh-aggregate/src/cli.mts generate .",
+    "prepare": "node --input-type=module -e \"import { existsSync } from 'node:fs'; import { execFileSync } from 'node:child_process'; const cli = '../../tools/dsh-aggregate/src/cli.mts'; if (existsSync(cli)) execFileSync(process.execPath, [cli, 'generate', '.'], { stdio: 'inherit' })\" 1>&2",
     "test": "npm run build && npm run check",
-    "check": "npm run --silent build:tools -- --check && node scripts/dsh-aggregate.mjs check . && node --test"
+    "check": "node ../../tools/dsh-aggregate/src/cli.mts check . && node --test",
+    "prepublishOnly": "node ../../tools/dsh-aggregate/src/cli.mts verify-release ."
   },
   "devDependencies": {
-    "esbuild": "0.28.2",
     "yaml": "2.9.1"
   },
   "dsh": {
@@ -47,9 +49,21 @@
       "patch": "./cordis.patch.yml"
     },
     "aggregate": {
+      "version": 1,
+      "runtimeRowId": "dsh-atlas-continuity",
       "plugins": [
         "@miorin/dsh-vcs-panel",
         "@miorin/dsh-sideby-note"
+      ]
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-api-remotes",
+        "@deepseek-ai/dsh-client-ui-plugin-manager",
+        "@deepseek-ai/dsh-client-ui-slots"
       ]
     }
   },

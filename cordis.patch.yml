@@ -10,3 +10,6 @@
     # @miorin/dsh-sideby-note
     - id: dsh-sideby-note
       name: '@miorin/dsh-sideby-note'
+    # @miorin/dsh-atlas-continuity (aggregate runtime)
+    - id: dsh-atlas-continuity
+      name: "@miorin/dsh-atlas-continuity"

@@ -12,13 +12,25 @@ const members = [
 
 const read = (path: string) => readFile(new URL(path, root), 'utf8')
 
-test('inserts the two original plugin rows in order without a wrapper', async () => {
+test('inserts the two original plugin rows in order plus the aggregate runtime row', async () => {
   const manifest = JSON.parse(await read('package.json'))
   const names = members.map(({ id }) => `@miorin/${id}`)
   assert.equal(manifest.private, true)
-  assert.deepEqual(manifest.dsh, { bundle: { patch: './cordis.patch.yml' }, aggregate: { plugins: names } })
+  assert.equal(manifest.exports['.'], './index.js')
+  assert.equal(manifest.exports['./client'], './client.js')
+  assert.deepEqual(manifest.dsh.bundle, { patch: './cordis.patch.yml' })
+  assert.equal(manifest.dsh.client.platform, 'web')
+  assert.equal(manifest.dsh.client.immediately, true)
+  assert.deepEqual(manifest.dsh.aggregate, {
+    version: 1,
+    runtimeRowId: 'dsh-atlas-continuity',
+    plugins: names,
+  })
   assert.deepEqual(parse(await read(manifest.dsh.bundle.patch)), [{
-    insert: members.map(({ id, ...fields }, index) => ({ id, name: names[index], ...fields })),
+    insert: [
+      ...members.map(({ id, ...fields }, index) => ({ id, name: names[index], ...fields })),
+      { id: 'dsh-atlas-continuity', name: '@miorin/dsh-atlas-continuity' },
+    ],
   }])
 })
 
