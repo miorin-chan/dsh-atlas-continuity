@@ -71,8 +71,8 @@
     }
   },
   "dependencies": {
-    "@miorin/dsh-vcs-panel": "link:../dsh-vcs-panel",
-    "@miorin/dsh-sideby-note": "link:../dsh-sideby-note"
+    "@miorin/dsh-vcs-panel": "0.1.4",
+    "@miorin/dsh-sideby-note": "0.1.1"
   },
   "publishConfig": {
     "access": "public",

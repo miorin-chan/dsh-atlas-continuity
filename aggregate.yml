@@ -8,8 +8,8 @@ engines:
   node: '^22.18.0 || >=24.11.0'
 plugins:
   - name: '@miorin/dsh-vcs-panel'
-    spec: link:../dsh-vcs-panel
+    spec: 0.1.4
     enabled: true
   - name: '@miorin/dsh-sideby-note'
-    spec: link:../dsh-sideby-note
+    spec: 0.1.1
     enabled: true
