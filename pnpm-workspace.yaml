@@ -5,3 +5,4 @@ allowBuilds:
 minimumReleaseAgeExclude:
   - '@miorin/dsh-sideby-note@0.1.1'
   - '@miorin/dsh-vcs-panel@0.1.4'
+  - '@miorin/dsh-aggregate@0.1.0'
