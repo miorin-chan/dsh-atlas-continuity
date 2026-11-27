@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@miorin/dsh-resonance':
+        specifier: link:../dsh-resonance
+        version: link:../dsh-resonance
       '@miorin/dsh-sideby-note':
         specifier: 0.1.1
         version: 0.1.1

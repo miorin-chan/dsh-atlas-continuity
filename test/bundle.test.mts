@@ -7,13 +7,14 @@ import { parse } from 'yaml'
 
 const root = new URL('../', import.meta.url)
 const members = [
-  { id: 'dsh-vcs-panel', config: { enabled: true } },
-  { id: 'dsh-sideby-note' },
+  { id: 'dsh-vcs-panel', enabled: true, config: { enabled: true } },
+  { id: 'dsh-sideby-note', enabled: true },
+  { id: 'dsh-resonance', enabled: false },
 ]
 
 const read = (path: string) => readFile(new URL(path, root), 'utf8')
 
-test('inserts the two original plugin rows in order plus the aggregate runtime row', async () => {
+test('inserts the three member plugin rows in order plus the aggregate runtime row', async () => {
   const manifest = JSON.parse(await read('package.json'))
   const names = members.map(({ id }) => `@miorin/${id}`)
   assert.notEqual(manifest.private, true)
@@ -27,11 +28,16 @@ test('inserts the two original plugin rows in order plus the aggregate runtime r
     version: 1,
     runtimeRowId: 'dsh-atlas-continuity',
     plugins: names,
-    defaults: Object.fromEntries(names.map(name => [name, true])),
+    defaults: Object.fromEntries(members.map(({ id, enabled }) => [`@miorin/${id}`, enabled])),
   })
   assert.deepEqual(parse(await read(manifest.dsh.bundle.patch)), [{
     insert: [
-      ...members.map(({ id, ...fields }, index) => ({ id, name: names[index], ...fields })),
+      ...members.map(({ id, enabled, ...fields }, index) => ({
+        id,
+        name: names[index],
+        ...(enabled ? {} : { disabled: true }),
+        ...fields,
+      })),
       { id: 'dsh-atlas-continuity', name: '@miorin/dsh-atlas-continuity' },
     ],
   }])
@@ -49,7 +55,14 @@ for (const { id } of members) {
     }
     const manifest = JSON.parse(await read(`node_modules/${name}/package.json`))
     assert.equal(manifest.name, name)
-    for (const entry of [name, `${name}/client`, `${name}/locale/en.json`, `${name}/icon`]) {
+    const entries = [
+      name,
+      `${name}/client`,
+      `${name}/locale/en.json`,
+      `${name}/icon`,
+      ...(id === 'dsh-resonance' ? [`${name}/preset`] : []),
+    ]
+    for (const entry of entries) {
       assert.ok((await stat(fileURLToPath(import.meta.resolve(entry)))).isFile(), entry)
     }
   })

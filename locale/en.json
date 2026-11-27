@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Continuity Modular Improvement Plan",
-    "description": "Review Git and Jujutsu changes and history in the right sidebar, and use Sideby Note beside the conversation to capture ideas while the agent works.",
+    "description": "Review Git and Jujutsu changes and history in the right sidebar, keep workspace notes in Sideby Note, and optionally enable Resonance mode for spatial co-reading.",
     "detail": "docs/DETAIL.md"
   }
 }

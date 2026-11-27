@@ -10,6 +10,10 @@
     # @miorin/dsh-sideby-note
     - id: dsh-sideby-note
       name: '@miorin/dsh-sideby-note'
+    # @miorin/dsh-resonance
+    - id: dsh-resonance
+      name: '@miorin/dsh-resonance'
+      disabled: true
     # @miorin/dsh-atlas-continuity (aggregate runtime)
     - id: dsh-atlas-continuity
       name: "@miorin/dsh-atlas-continuity"

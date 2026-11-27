@@ -6,10 +6,12 @@ const runtime = createAggregateClient({
   members: [
     "@miorin/dsh-vcs-panel",
     "@miorin/dsh-sideby-note",
+    "@miorin/dsh-resonance",
   ],
   defaults: {
     "@miorin/dsh-vcs-panel": true,
     "@miorin/dsh-sideby-note": true,
+    "@miorin/dsh-resonance": false,
   },
 })
 

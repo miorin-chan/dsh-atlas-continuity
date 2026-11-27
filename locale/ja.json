@@ -1,6 +1,6 @@
 {
   "meta": {
     "title": "継続性のモジュール型改善計画",
-    "description": "右サイドバーで Git や Jujutsu の変更と履歴を確認し、エージェントの作業中に浮かんだアイデアを会話の横にある Sideby Note に書き留めます。"
+    "description": "右サイドバーで Git や Jujutsu の変更と履歴を確認し、会話の横の Sideby Note にアイデアを書き留め、必要に応じて共鳴モードで共同読解できます。"
   }
 }
