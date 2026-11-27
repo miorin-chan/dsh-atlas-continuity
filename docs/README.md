@@ -12,9 +12,10 @@
 
 包名 `@miorin/dsh-atlas-continuity` 发布至 npm。目标 DSH 版本为 `0.2.2-rc.5`。
 源码准备需要 Node.js 22.18 或更新的 22.x 版本，或 24.11 及更新版本，以及 pnpm。
-本地联调时，两个源码目录 `../dsh-vcs-panel`、`../dsh-sideby-note` 须已完成各自的构建。
-在本目录运行 `pnpm install --frozen-lockfile`，安装会在本目录建立依赖并生成聚合 patch。
-安装至 DSH 的入口见[用户说明](../README.zh.md)。
+在 DeepSeek Harness 的 **插件** → **添加插件** 中输入 `@miorin/dsh-atlas-continuity`（本地联调时，
+先完成 `../dsh-vcs-panel` 与 `../dsh-sideby-note` 各自构建，
+在本目录运行 `pnpm install --frozen-lockfile`，再选择本目录）。
+如果目标 profile 已单独安装任一成员，请先移除对应独立包的加载项，避免触发重复行 ID。
 
 ## 维护与校验
 

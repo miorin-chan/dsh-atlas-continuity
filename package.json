@@ -29,7 +29,9 @@
     "AGENTS.md",
     "AGENTS.local.md",
     "DESIGN.md",
-    "docs/README.md"
+    "docs/README.md",
+    "docs/DETAIL.md",
+    "docs/DETAIL.zh.md"
   ],
   "engines": {
     "dsh": ">=0.2.2-rc.5",
