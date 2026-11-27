@@ -1,5 +1,8 @@
 # 脉络 Atlas 维护说明
 
+- [产品设计](../DESIGN.md)：主题定位、成员收口边界与成功标准。
+- [用户说明](../README.zh.md) · [English README](../README.md)：安装与使用说明。
+
 聚合包在插件页提供一张卡，卡内使用 DSH 原生插件行。
 版本管理面板在前，边记部在后。[清单](../aggregate.yml)声明成员及其 `link:` 来源。
 生成的 [patch](../cordis.patch.yml)保留成员自己的行 ID、包名和配置，成员仍可独立安装。
